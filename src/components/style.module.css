@@ -1,0 +1,201 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #8758fe;
+	color: white;
+}
+
+.App {
+	width: 90%;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2rem auto;
+	background-color: #1c1a41;
+	border-radius: 5px;
+}
+
+.errMsg {
+  color: red;
+  font-weight: bold;
+}
+
+.info {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  text-decoration: underline #eeeeee84;
+  color: rgba(39, 197, 86, 0.5);
+}
+
+.header {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h2 {
+	margin: 2rem auto 2rem auto;
+	letter-spacing: 1px;
+}
+
+.form {
+	margin: 1rem auto;
+	width: 95%;
+	display: flex;
+}
+
+.input {
+	width: 75%;
+	height: 2rem;
+	font-size: 1.2rem;
+	border: 2px solid #8758fe87;
+	color: white;
+	background-color: transparent;
+	padding: 0.5rem;
+	border-right: none;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	text-align: center;
+}
+
+.input:focus {
+	outline: none;
+}
+
+.submit {
+	width: 25%;
+	border: none;
+	color: white;
+	background-color: #8758fe;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.TL {
+	width: 100%;
+	margin: 1rem auto;
+}
+
+.todoItem {
+	width: 100%;
+	background-color: #8758fe;
+	display: flex;
+	justify-content: space-between;
+	margin: 1.3rem auto;
+	border-radius: 5px;
+}
+
+.todoContent {
+	width: 72%;
+	height: auto;
+	padding-left: 0.9rem;
+	display: block;
+	overflow-wrap: break-word;
+}
+
+.todoContentLineThrough {
+	width: 70%;
+	height: auto;
+	padding-left: 0.9rem;
+	display: block;
+	overflow-wrap: break-word;
+	text-decoration: line-through red 3px;
+	opacity: 0.3;
+}
+
+.btnCon {
+	width: 20%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.delete {
+	color: white;
+	font-weight: 600;
+	background-color: #8758fe;
+	cursor: pointer;
+	width: 2rem;
+	height: 2rem;
+	object-fit: cover;
+}
+
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	margin-top: -14px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+	/* background-color: transparent; */
+}
+
+.checkmark {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: transparent;
+	border: 2px solid #ededed;
+	border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: transparent;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	background-color: transparent;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.plus {
+  font-weight: 800;
+  font-size: 30px;
+}
