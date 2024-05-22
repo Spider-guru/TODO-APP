@@ -3,6 +3,12 @@ import Header from "./Header";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import { useState } from "react";
+/*
+features to be added:
+1. Light and dark mode with persistent storage
+2. animations on startup, components unload and component load
+3. Improve design and font
+*/
 
 function App() {
 	let [todo, setTodo] = useState("");
