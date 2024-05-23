@@ -18,7 +18,7 @@ let TodoItem = ({ todoItem, todoList, setTodoList }) => {
 			className={style.todoItem}
 		>
 			<p className={isChecked ? style.todoContentLineThrough : style.todoContent}>
-				{todoItem.name}
+				{todoItem.item}
 			</p>
 
 			<div className={style.btnCon}>

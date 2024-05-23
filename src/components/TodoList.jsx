@@ -1,6 +1,7 @@
 import style from "./style.module.css";
 import TodoItem from "./todoItem";
 let TodoList = ({ todoList, setTodoList }) => {
+	
 	return (
 		<div className={style.TL}>
 			{todoList.map((todoItem) => (
