@@ -1,15 +1,16 @@
+import { useEffect } from "react";
 import style from "./style.module.css";
 import TodoItem from "./todoItem";
 let TodoList = ({ todoList, setTodoList }) => {
-	
+
 	return (
 		<div className={style.TL}>
-			{todoList.map((todoItem) => (
+			{todoList.length > 0 && todoList.map((todoItem) => (
 				<TodoItem
-					key={todoItem.id}
+					key={todoItem.key}
 					setTodoList={setTodoList}
 					todoList={todoList}
-					todoItem={todoItem}
+					todoItem={todoItem.paragraph}
 				/>
 			))}
 		</div>

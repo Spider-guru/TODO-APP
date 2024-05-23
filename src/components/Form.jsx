@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import style from "./style.module.css";
+import { idGen, extractTodoItemsFromLocalStorage, saveToLocalStorage } from "../utilities";
 let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList }) => {
 	let handleChange = (e) => {
 		setTodo(e.target.value);
-	};
-
-	let idGen = () => {
-		return Math.round(Math.random() * 10000 * Math.random());
 	};
 
 	let handleSubmit = (event) => {
@@ -16,31 +13,29 @@ let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList }) => {
 			return;
 		} else {
 			setIsErr((prev) => (prev = false));
-			setTodoList((prev) => (prev = [...todoList, { item: todo, id: idGen() }]));
+			setTodoList((prev) => (prev = [...todoList, { paragraph: todo, key: `${idGen()}` }]));
 			setTodo("");
 		}
 	};
 
-	let handleLocalStorage = (todolist) => {
-		if (localStorage.getItem("react_todo_list") == null) {
-			localStorage.setItem("react_todo_list", `${extractTodoItemsFromTodolistArr(todoList)}`);
+	useEffect(() => {
+		if (todoList.length !== 0) {
+			saveToLocalStorage(todoList);
 		}
-	};
-
-	let extractTodoItemsFromTodolistArr = (todoList) => {
-		let arrOfTodoItems = [];
-		Object.values(todoList).map((obj) => arrOfTodoItems.push(obj.item));
-		let arrOfTodoItemsToStringFormat = arrOfTodoItems.toString().split().join(" ");
-		return arrOfTodoItemsToStringFormat;
-	};
-
-	let extractTodoItemsFromLocalStorage = (extractedItems) => {
-		return extractedItems.split(",");
-	};
+	}, [todoList]);
 
 	useEffect(() => {
-
-	}, [todoList]);
+		if (
+			localStorage.getItem("todoList") !== null &&
+			localStorage.getItem("todoList").length !== 0
+		) {
+			console.log("hello");
+			console.log(localStorage.getItem("todoList"));
+			let data = localStorage.getItem("todoList");
+			let extractedData = extractTodoItemsFromLocalStorage(data);
+			setTodoList((p) => (p = extractedData));
+		}
+	}, []);
 
 	return (
 		<>

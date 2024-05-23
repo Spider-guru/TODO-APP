@@ -15,6 +15,7 @@ function App() {
 	let [todo, setTodo] = useState("");
 	let [todoList, setTodoList] = useState([]);
 	let [isErr, setIsErr] = useState(false);
+	let [isDark, setIsDark] = useState(false);
 
 	return (
 		<motion.div
@@ -23,7 +24,7 @@ function App() {
 			transition={{ duration: 2 }}
 			className={style.App}
 		>
-			<Header />
+			<Header isDark={isDark} setIsDark={setIsDark} />
 
 			<Form
 				todo={todo}
