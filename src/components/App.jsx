@@ -3,6 +3,7 @@ import Header from "./Header";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import { useState } from "react";
+import { motion } from "framer-motion";
 /*
 features to be added:
 1. Light and dark mode with persistent storage
@@ -16,7 +17,12 @@ function App() {
 	let [isErr, setIsErr] = useState(false);
 
 	return (
-		<div className={style.App}>
+		<motion.div
+			initial={{ opacity: 0, scale: 0 }}
+			animate={{ opacity: 1, scale: 1 }}
+			transition={{ duration: 2 }}
+			className={style.App}
+		>
 			<Header />
 
 			<Form
@@ -27,22 +33,18 @@ function App() {
 				setIsErr={setIsErr}
 			/>
 
-			<TodoList
-				todoList={todoList}
-				setTodoList={setTodoList}
-			/>
+			<TodoList todoList={todoList} setTodoList={setTodoList} />
 
 			<p>
 				{isErr ? (
-					<span className={style.errMsg}>
-						Pls fill in a valid task, no empty task allowed
-					</span>
+					<span className={style.errMsg}>Pls fill in a valid task, no empty task allowed</span>
 				) : (
 					<span className={style.info}>Built by Spider-Guru🕷</span>
 				)}
 			</p>
-		</div>
+		</motion.div>
 	);
 }
 
 export default App;
+
