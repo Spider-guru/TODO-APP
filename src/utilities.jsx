@@ -22,3 +22,8 @@ export let saveToLocalStorage = (param) => {
 		console.info("error on storing data in local storage");
 	}
 };
+
+let extractTodoItemsFromTodolistArr = (val) => {
+	let value = val.map((item) => Object.values(item).join()).join("::");
+	return value;
+};

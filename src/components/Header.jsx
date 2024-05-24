@@ -1,13 +1,15 @@
-import style from "./style.module.css";
+import "./style.css";
 
 let Header = ({ setIsDark, isDark }) => {
 	return (
-		<div className={style.header}>
+		<div className={'header'}>
 			<h2>TODO LIST WEB APP</h2>
 			<button
 				type='button'
-				onClick={() => setIsDark((p) => (p = !p))}
-				className={isDark ? style.btnD : style.btnL}
+				onClick={() => {
+					setIsDark((p) => (p = !p));
+				}}
+				className={isDark ? 'btnD' : 'btnL'}
 			>
 				{isDark ? "Light" : "Dark"}
 			</button>

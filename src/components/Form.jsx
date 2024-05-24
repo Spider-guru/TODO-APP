@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import style from "./style.module.css";
+import "./style.css";
 import { idGen, extractTodoItemsFromLocalStorage, saveToLocalStorage } from "../utilities";
-let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList }) => {
+let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList, isDark }) => {
 	let handleChange = (e) => {
 		setTodo(e.target.value);
 	};
@@ -39,17 +39,17 @@ let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList }) => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit} className={style.form}>
+			<form onSubmit={handleSubmit} className={"form"}>
 				<input
 					placeholder='What are the tasks today?'
 					value={todo}
 					onChange={handleChange}
 					type='text'
-					className={style.input}
+					className={isDark ? "inputD input" : " input inputL"}
 				/>
 
-				<button type='submit' className={style.submit}>
-					{window.innerWidth < 500 ? <span className={style.plus}>&#43;</span> : `Add Task`}
+				<button type='submit' className={isDark?"submit submitD":'submit submitL'}>
+					{window.innerWidth < 500 ? <span className={"plus"}>&#43;</span> : `Add Task`}
 				</button>
 			</form>
 		</>

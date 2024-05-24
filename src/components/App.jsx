@@ -1,4 +1,4 @@
-import style from "./style.module.css";
+import './style.css'
 import Header from "./Header";
 import Form from "./Form";
 import TodoList from "./TodoList";
@@ -16,36 +16,43 @@ function App() {
 	let [todoList, setTodoList] = useState([]);
 	let [isErr, setIsErr] = useState(false);
 	let [isDark, setIsDark] = useState(false);
-
+	const spring = {
+		type: "spring",
+		stiffness: 200,
+		damping: 10,
+		duration: 3,
+	};
 	return (
-		<motion.div
-			initial={{ opacity: 0, scale: 0 }}
-			animate={{ opacity: 1, scale: 1 }}
-			transition={{ duration: 2 }}
-			className={style.App}
-		>
-			<Header isDark={isDark} setIsDark={setIsDark} />
+		<div className={isDark ? 'bodyD' : 'bodyL'}>
+			<motion.div
+				initial={{ opacity: 0, scale: 0 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={spring}
+				layout
+				className={isDark ? 'AppD' : 'AppL'}
+			>
+				<Header isDark={isDark} setIsDark={setIsDark} />
+				<Form
+					todo={todo}
+					setTodo={setTodo}
+					todoList={todoList}
+					setTodoList={setTodoList}
+					setIsErr={setIsErr}
+					isDark={isDark}
+				/>
 
-			<Form
-				todo={todo}
-				setTodo={setTodo}
-				todoList={todoList}
-				setTodoList={setTodoList}
-				setIsErr={setIsErr}
-			/>
+				<TodoList todoList={todoList} setTodoList={setTodoList} isDark={isDark} />
 
-			<TodoList todoList={todoList} setTodoList={setTodoList} />
-
-			<p>
-				{isErr ? (
-					<span className={style.errMsg}>Pls fill in a valid task, no empty task allowed</span>
-				) : (
-					<span className={style.info}>Built by Spider-Guru🕷</span>
-				)}
-			</p>
-		</motion.div>
+				<p>
+					{isErr ? (
+						<span className={'errMsg'}>Pls fill in a valid task, no empty task allowed</span>
+					) : (
+						<span className={'info'}>Built by Spider-Guru🕷</span>
+					)}
+				</p>
+			</motion.div>
+		</div>
 	);
 }
 
 export default App;
-

@@ -1,18 +1,23 @@
 import { useEffect } from "react";
-import style from "./style.module.css";
+import "./style.css";
 import TodoItem from "./todoItem";
-let TodoList = ({ todoList, setTodoList }) => {
-
+import { AnimatePresence } from "framer-motion";
+let TodoList = ({ todoList, setTodoList, isDark }) => {
 	return (
-		<div className={style.TL}>
-			{todoList.length > 0 && todoList.map((todoItem) => (
-				<TodoItem
-					key={todoItem.key}
-					setTodoList={setTodoList}
-					todoList={todoList}
-					todoItem={todoItem.paragraph}
-				/>
-			))}
+		<div className={"TL"}>
+			<AnimatePresence>
+				{todoList.length > 0 &&
+					todoList.map((todoItem) => (
+						<TodoItem
+							key={todoItem.key}
+							setTodoList={setTodoList}
+							todoList={todoList}
+							todoItem={todoItem.paragraph}
+							index={todoItem.key}
+							isDark={isDark}
+						/>
+					))}
+			</AnimatePresence>
 		</div>
 	);
 };

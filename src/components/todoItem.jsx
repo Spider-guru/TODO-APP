@@ -1,9 +1,9 @@
-import style from "./style.module.css";
+import "./style.css";
 import trash from "../assets/trash.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-let TodoItem = ({ todoItem, todoList, setTodoList }) => {
+let TodoItem = ({ todoItem, todoList, setTodoList, index, isDark }) => {
 	let [isChecked, setIsChecked] = useState(false);
 
 	let handleClick = () => {
@@ -11,8 +11,8 @@ let TodoItem = ({ todoItem, todoList, setTodoList }) => {
 			setTodoList((prev) => (prev = []));
 			localStorage.removeItem("todoList");
 		} else {
-			setTodoList((prev) => (prev = prev.filter((item) => item.paragraph !== todoItem)));
-			console.log(todoList.length);
+			setTodoList((prev) => (prev = prev.filter((item) => item.key !== index)));
+			console.log(todoList);
 		}
 	};
 
@@ -20,18 +20,19 @@ let TodoItem = ({ todoItem, todoList, setTodoList }) => {
 		<motion.div
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			transition={{ duration: 2 }}
-			className={style.todoItem}
+			transition={{ duration: 0.5 }}
+			exit={{ opacity: 0, scale: 0.7 }}
+			className={isDark ? "todoItem todoItemD" : "todoItem todoItemL"}
 		>
-			<p className={isChecked ? style.todoContentLineThrough : style.todoContent}>{todoItem}</p>
+			<p className={isChecked ? "todoContentLineThrough" : "todoContent"}>{todoItem}</p>
 
-			<div className={style.btnCon}>
-				<label className={style.container}>
+			<div className={"btnCon"}>
+				<label className={"container"}>
 					<input type='checkbox' onClick={() => setIsChecked((prev) => (prev = !prev))} />
-					<span className={style.checkmark}></span>
+					<span className={"checkmark"}></span>
 				</label>
 
-				<img src={trash} alt='' onClick={handleClick} className={style.delete} />
+				<img src={trash} alt='' onClick={handleClick} className={"delete"} />
 			</div>
 		</motion.div>
 	);
