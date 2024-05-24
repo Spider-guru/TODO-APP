@@ -12,12 +12,12 @@ body {
 .bodyL {
 	background-color: var(--light-color);
 	height: 100dvh;
-	overflow: scroll;
+	overflow-x: hidden;
 }
 .bodyD {
 	background-color: var(--dark-color);
 	height: 100dvh;
-	overflow: scroll;
+	overflow-x: hidden;
 }
 
 .AppL,
@@ -258,6 +258,7 @@ input::placeholder {
 	font-weight: bold;
 	font-size: 1.05rem;
 	border-radius: 0.3rem;
+	cursor: pointer;
 }
 
 .btnD {
