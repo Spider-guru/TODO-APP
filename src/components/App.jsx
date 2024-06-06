@@ -53,7 +53,11 @@ function App() {
 				layout
 				className={isDark ? "AppD" : "AppL"}
 			>
-				<Header isDark={isDark} setIsDark={setIsDark} />
+				<Header
+					isDark={isDark}
+					setIsDark={setIsDark}
+					setTodoList={setTodoList}
+				/>
 				<Form
 					todo={todo}
 					setTodo={setTodo}
@@ -63,7 +67,11 @@ function App() {
 					isDark={isDark}
 				/>
 
-				<TodoList todoList={todoList} setTodoList={setTodoList} isDark={isDark} />
+				<TodoList
+					todoList={todoList}
+					setTodoList={setTodoList}
+					isDark={isDark}
+				/>
 
 				<p>
 					{isErr ? (

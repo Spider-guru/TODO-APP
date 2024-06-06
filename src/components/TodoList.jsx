@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./style.css";
 import TodoItem from "./todoItem";
 import { AnimatePresence } from "framer-motion";

@@ -29,8 +29,6 @@ let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList, isDark }) => {
 			localStorage.getItem("todoList") !== null &&
 			localStorage.getItem("todoList").length !== 0
 		) {
-			console.log("hello");
-			console.log(localStorage.getItem("todoList"));
 			let data = localStorage.getItem("todoList");
 			let extractedData = extractTodoItemsFromLocalStorage(data);
 			setTodoList((p) => (p = extractedData));
@@ -39,7 +37,10 @@ let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList, isDark }) => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit} className={"form"}>
+			<form
+				onSubmit={handleSubmit}
+				className={"form"}
+			>
 				<input
 					placeholder='What are the tasks today?'
 					value={todo}
@@ -48,7 +49,10 @@ let Form = ({ setIsErr, todo, setTodo, todoList, setTodoList, isDark }) => {
 					className={isDark ? "inputD input" : " input inputL"}
 				/>
 
-				<button type='submit' className={isDark?"submit submitD":'submit submitL'}>
+				<button
+					type='submit'
+					className={isDark ? "submit submitD" : "submit submitL"}
+				>
 					{window.innerWidth < 500 ? <span className={"plus"}>&#43;</span> : `Add Task`}
 				</button>
 			</form>

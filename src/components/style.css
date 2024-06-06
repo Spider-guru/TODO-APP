@@ -29,6 +29,7 @@ body {
 	align-items: center;
 	margin: 2rem auto;
 	border-radius: 5px;
+	position: relative;
 }
 .AppD {
 	background-color: var(--light-color);
@@ -269,4 +270,19 @@ input::placeholder {
 .btnL {
 	background-color: var(--light-color);
 	color: white;
+}
+
+.deleteAll {
+	
+	padding: 0.5rem;
+	font-weight: bold;
+	border: none;
+	color: white;
+	background-color: var(--light-color);
+	border-radius: 0.2rem;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
 }
